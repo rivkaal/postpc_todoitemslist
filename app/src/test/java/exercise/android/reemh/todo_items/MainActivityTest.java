@@ -25,20 +25,20 @@ import static org.mockito.ArgumentMatchers.eq;
 public class MainActivityTest extends TestCase {
 
   private ActivityController<MainActivity> activityController;
-  private TodoItemsHolder mockHolder;
+  private TodoItemsDataBase mockDataBase;
 
   @Before
   public void setup(){
-    mockHolder = Mockito.mock(TodoItemsHolder.class);
-    // when asking the `mockHolder` to get the current items, return an empty list
-    Mockito.when(mockHolder.getCurrentItems())
+    mockDataBase = Mockito.mock(TodoItemsDataBase.class);
+    // when asking the `mockDataBase` to get the current items, return an empty list
+    Mockito.when(mockDataBase.getCurrentItems())
       .thenReturn(new ArrayList<>());
 
     activityController = Robolectric.buildActivity(MainActivity.class);
 
-    // let the activity use our `mockHolder` as the TodoItemsHolder
+    // let the activity use our `mockDataBase` as the TodoItemsDataBase
     MainActivity activityUnderTest = activityController.get();
-    activityUnderTest.holder = mockHolder;
+    activityUnderTest.dataBase = mockDataBase;
   }
 
   @Test
@@ -65,8 +65,8 @@ public class MainActivityTest extends TestCase {
     editText.setText(userInput);
     fab.performClick();
 
-    // verify: verify that `mockHolder.addNewInProgressItem()` was called, with exactly same string
-    Mockito.verify(mockHolder).addNewInProgressItem(eq(userInput));
+    // verify: verify that `mockDataBase.addNewInProgressItem()` was called, with exactly same string
+    Mockito.verify(mockDataBase).addNewInProgressItem(eq(userInput));
   }
 
   @Test
@@ -77,9 +77,9 @@ public class MainActivityTest extends TestCase {
   }
 
   @Test
-  public void when_holderSaysNoItems_then_recyclerViewShowsZeroItems() {
+  public void when_dataBaseSaysNoItems_then_recyclerViewShowsZeroItems() {
     // setup
-    Mockito.when(mockHolder.getCurrentItems())
+    Mockito.when(mockDataBase.getCurrentItems())
       .thenReturn(new ArrayList<>());
 
     // test - let the activity think it is being shown
@@ -94,12 +94,12 @@ public class MainActivityTest extends TestCase {
   }
 
   @Test
-  public void when_holderSays1ItemOfTypeInProgress_then_activityShouldShow1MatchingViewInRecyclerView(){
+  public void when_dataBaseSays1ItemOfTypeInProgress_then_activityShouldShow1MatchingViewInRecyclerView(){
     // setup
 
     // when asking the `mockHolder` to get the current items, return a list with 1 item of type "in progress"
     ArrayList<TodoItem> itemsReturnedByHolder = new ArrayList<>();
-    Mockito.when(mockHolder.getCurrentItems())
+    Mockito.when(mockDataBase.getCurrentItems())
       .thenReturn(itemsReturnedByHolder);
     TodoItem itemInProgress = new TodoItem();
     // TODO: customize `itemInProgress` to have type IN-PROGRESS and description "do homework"
@@ -126,12 +126,12 @@ public class MainActivityTest extends TestCase {
 
 
   @Test
-  public void when_holderSays1ItemOfTypeDone_then_activityShouldShow1MatchingViewInRecyclerView(){
+  public void when_dataBaseSays1ItemOfTypeDone_then_activityShouldShow1MatchingViewInRecyclerView(){
     // setup
 
     // when asking the `mockHolder` to get the current items, return a list with 1 item of type "DONE"
     ArrayList<TodoItem> itemsReturnedByHolder = new ArrayList<>();
-    Mockito.when(mockHolder.getCurrentItems())
+    Mockito.when(mockDataBase.getCurrentItems())
       .thenReturn(itemsReturnedByHolder);
     TodoItem itemDone = new TodoItem();
     // TODO: customize `itemDone` to have type DONE and description "buy tomatoes"

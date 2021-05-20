@@ -4,7 +4,7 @@ import java.util.List;
 
 
 // TODO: feel free to add/change/remove methods as you want
-public interface TodoItemsHolder {
+public interface TodoItemsDataBase {
 
   /** Get a copy of the current items list */
   List<TodoItem> getCurrentItems();

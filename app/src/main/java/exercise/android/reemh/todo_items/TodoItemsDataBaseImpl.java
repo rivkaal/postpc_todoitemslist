@@ -3,7 +3,7 @@ package exercise.android.reemh.todo_items;
 import java.util.List;
 
 // TODO: implement!
-public class TodoItemsHolderImpl implements TodoItemsHolder {
+public class TodoItemsDataBaseImpl implements TodoItemsDataBase {
   @Override
   public List<TodoItem> getCurrentItems() { return null; }
 

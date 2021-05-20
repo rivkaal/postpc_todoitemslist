@@ -12,15 +12,15 @@ The exact SPECS can be found at file `MainActivity.java`.
 *NOTICE:*
 The app implementation is extracted into logic and UI:
 
-Pure-logic should be implemented at `TodoItemsHolderImpl.java`.
+Pure-logic should be implemented at `TodoItemsDataBaseImpl.java`.
 
 UI should be implemented at `MainActivity.java`.  
 
 ## To fulfill this exercise:
 
 Take a look at the following files, read all of them, and make sure you understand them before starting to write any code:
-* `TodoItemsHolder.java` (interface)
-* `TodoItemsHolderImpl.java` (default implementation of the interface)
+* `TodoItemsDataBase.java` (interface)
+* `TodoItemsDataBaseImpl.java` (default implementation of the interface)
 * `TodoItem` (data class representing a TODO item)
 * `MainActivity.java` (screen)
 

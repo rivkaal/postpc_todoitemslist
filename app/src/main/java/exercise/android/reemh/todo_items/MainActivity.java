@@ -1,26 +1,20 @@
 package exercise.android.reemh.todo_items;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity {
 
-  public TodoItemsHolder holder = null;
+  public TodoItemsDataBase dataBase = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    if (holder == null) {
-      holder = new TodoItemsHolderImpl();
+    if (dataBase == null) {
+      dataBase = new TodoItemsDataBaseImpl();
     }
 
     // TODO: implement the specs as defined below
@@ -55,7 +49,7 @@ SPECS:
   * the edit-text should store the same user-input (don't erase input upon screen change)
 
 Remarks:
-- you should use the `holder` field of the activity
+- you should use the `dataBase` field of the activity
 - you will need to create a class extending from RecyclerView.Adapter and use it in this activity
 - notice that you have the "row_todo_item.xml" file and you can use it in the adapter
 - you should add tests to make sure your activity works as expected. take a look at file `MainActivityTest.java`
