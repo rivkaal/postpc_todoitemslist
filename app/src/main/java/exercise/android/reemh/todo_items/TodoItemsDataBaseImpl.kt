@@ -3,7 +3,7 @@ package exercise.android.reemh.todo_items
 // TODO: implement!
 class TodoItemsDataBaseImpl : TodoItemsDataBase {
 
-    override val currentItems: MutableList<TodoItem> = mutableListOf()
+    override val currentItems: ArrayList<TodoItem> = arrayListOf()
 //        get() = TODO("Not yet implemented")
 
     override fun addNewInProgressItem(description: String?) {

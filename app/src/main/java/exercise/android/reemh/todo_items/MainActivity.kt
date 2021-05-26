@@ -36,6 +36,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable("todos", dataBase!!.currentItems)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        var list: ArrayList<TodoItem> = savedInstanceState.getSerializable("todos")
+                as ArrayList<TodoItem>
+        dataBase!!.currentItems
+                .addAll(list)
+    }
 }
 
 /**
