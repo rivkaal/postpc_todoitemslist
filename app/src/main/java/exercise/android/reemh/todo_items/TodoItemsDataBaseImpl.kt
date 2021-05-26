@@ -8,11 +8,24 @@ class TodoItemsDataBaseImpl : TodoItemsDataBase {
 
     override fun addNewInProgressItem(description: String?) {
         val todoItem = TodoItem(description)
-        currentItems.add(todoItem)
-
+        currentItems.add(0, todoItem)
     }
 
-    override fun markItemDone(item: TodoItem?) {}
-    override fun markItemInProgress(item: TodoItem?) {}
-    override fun deleteItem(item: TodoItem?) {}
+    override fun markItemDone(item: TodoItem?) {
+        item?.inProgress = false
+        currentItems.remove(item)
+        if (item != null) {
+            currentItems.add(item)
+        }
+    }
+    override fun markItemInProgress(item: TodoItem?) {
+        item?.inProgress = true
+        currentItems.remove(item)
+        if (item != null) {
+            currentItems.add(0, item)
+        }
+    }
+    override fun deleteItem(item: TodoItem?) {
+        currentItems.remove(item)
+    }
 }

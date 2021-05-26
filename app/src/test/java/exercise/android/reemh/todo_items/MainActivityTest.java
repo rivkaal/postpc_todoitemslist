@@ -38,7 +38,7 @@ public class MainActivityTest extends TestCase {
 
     // let the activity use our `mockDataBase` as the TodoItemsDataBase
     MainActivity activityUnderTest = activityController.get();
-    activityUnderTest.dataBase = mockDataBase;
+    activityUnderTest.setDataBase(mockDataBase);
   }
 
   @Test

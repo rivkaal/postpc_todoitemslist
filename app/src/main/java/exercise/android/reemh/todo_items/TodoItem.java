@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class TodoItem implements Serializable {
   String text;
+  boolean inProgress = true;
 
   public TodoItem(String str)
   {
